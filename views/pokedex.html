@@ -1,0 +1,52 @@
+<div class="group">
+  <input type="text" required ng-model="myFilter">
+  <span class="highlight"></span>
+  <span class="bar"></span>
+  <label>Search Pokemon</label>
+  <button ng-click="sortBy('name', pokemonSpecies)">Sort A-Z</button>
+  <button ng-click="sortBy('id', pokemonSpecies)">Sort ID</button>
+</div>
+<div class="pokeInspector" id="pokemonCard" ng-show= 'showInspector' ng-style="pokeBackground">
+  <section class="top">
+      <img class="symbol" src={{pokeSymbol}}>
+      <div class="evolveText" ng-hide=showing>Evolves from {{evolvesFrom}}</div>
+      <div class="evolvesFrom" ng-hide=showing>
+        <img src='https://img.pokemondb.net/artwork/{{evolvesFrom}}.jpg'/>
+      </div>
+      <button class="exit"
+              ng-click="showInspector = false"
+      >X</button>
+      <h3 class="pokename">{{ specificPokemon[0].name }}</h3>
+
+  <!-- <h3 class="move">{{specificPokemon.types[1].type.name}}</h3> -->
+      <img class="poke-img" src='https://img.pokemondb.net/artwork/{{specificPokemon[0].name}}.jpg'/>
+      <div class='measurements'>Height: {{types.height}}ft       Weight: {{types.weight}}lbs</div>
+  </section>
+  <section class="bottom">
+      <h4 class="description">{{flavorText}}</h4>
+      <div class='border'></div>
+      <div class="moves">
+        <div class='types'>
+          <p id='type'>Type </p><h4 id="typeText" ng-repeat="type in types.types">{{type.type.name}}</h4>
+        </div>
+        <div class='evolutions'>
+          <p id='type'>Evolutions </p><h4 id="typeText" ng-repeat="evo in evoArr">{{evo}}</h4>
+        </div>
+      </div>
+      <h3 class="pokeId">ID: {{specificPokemon[0].id}}</h3>
+  </section>
+</div>
+
+<div class="poke-wrapper">
+
+  <div ng-repeat="poke in pokemonSpecies | filter: {name: myFilter}"
+       class="pokeCard"
+       ng-click="getSpecificPokemon(poke.url); getEvolvesFrom(poke.id); getType(poke.id);  getFlavorText(poke.id);   $parent.showInspector = true;   ">
+
+    <h6 class="id">{{poke.id}}</h6>
+    <h3 class="pokeName">{{ poke.name }}</h3>
+    <div class="poke-image">
+      <img src='https://img.pokemondb.net/artwork/{{poke.name}}.jpg'/>
+    </div>
+  </div>
+</div>

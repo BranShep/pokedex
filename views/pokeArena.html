@@ -1,0 +1,48 @@
+<div id="stadium">
+
+
+    <button id="arenaButton" ng-click=" $parent.showTop = !showTop; showingEnter = 'false'; showExit = 'true'; showCard = 'true'; showChoose = !showChoose;" ng-hide="showingEnter"> Enter Arena </BUTTON>
+
+    <button id="arenaButton" ng-click=" $parent.showTop = !showTop; showExit = fale; showCard = false; showingEnter = false; showChoose = false; showStart = false; showWinner = false; showAttacksLeft = false; showAttacksRight = false" ng-show="showExit"> Exit Arena </BUTTON>
+
+
+    <button id="arenaButton" ng-click="getRandomPokemon(); getRandomNumbers(); showCard = false; showStart = true; showWinner = false;" ng-show = "showChoose"> Choose Pokemon </BUTTON>
+
+    <button id="arenaButton" ng-click="getWinner(randomNumberLeft, randomNumberRight); showWinner = true" ng-show='showStart'> Start Battle </BUTTON>
+
+      <div class="pokeCardLeft"  ng-show= 'showTop' ng-style="pokeBackground">
+        <section class="top-left">
+            <h3 class="pokename-left">{{ randomLeft.name }}</h3>
+            <img class="poke-img-left" src='https://img.pokemondb.net/artwork/{{randomLeft.name}}.jpg'/>
+            <h3 class="id-left">ID: {{randomLeft.id}}</h3>
+            <h3 class= "points"> LvL: {{randomNumberLeft}}</h3>
+            <button id="attackLeft" ng-hide="showAttackLeft" ng-click=" getPokeAttacks(randomLeft.url); showAttackLeft = !showAttackLeft; showAttacksLeft = !showAttacksLeft; showAttackRight = !showAttackRight">Attack</button>
+        </section>
+      </div>
+
+      <div class="attacksLeft" ng-show= "showAttacksLeft">
+        <h3 class="attacksHead">Attacks</h3>
+        <select class="pokeAttacks"  ng-model="selectedMove" ng-options="y.move.name for (x, y) in pokeAttacks[0].moves"></select>
+      </div>
+
+      <div class="attacksRight" ng-repeat="stat in pokeAttacks[0].stats" ng-show= "showAttacksRight">
+        <h3 class="attacksHead">Attacks</h3>
+      </div>
+
+      <div class="pokeCardRight"  ng-show= 'showTop' ng-style="pokeBackground">
+          <section class="top-left">
+                <h3 class="pokename-left">{{ randomRight.name }}</h3>
+                <img class="poke-img-left" src='https://img.pokemondb.net/artwork/{{randomRight.name}}.jpg'/>
+                <h3 class="id-left">ID: {{randomRight.id}}</h3>
+                <h3 class= "points"> LvL: {{randomNumberRight}}</h3>
+                <button id="attackRight" ng-show="showAttackRight" ng-click=" getPokeAttacks(randomRight.url); showAttacksRight = !showAttacksRight; showAttackRight = !showAttackRight; showAttackLeft = !showAttackLeft">Attack</button>
+          </section>
+     </div>
+
+     <div class="cardLeft"  ng-show= 'showCard' ng-style="pokeBackground"></div>
+     <div class="cardRight"  ng-show= 'showCard' ng-style="pokeBackground"></div>
+
+     <div class='winner' ng-show="showWinner">{{winner}} Wins!</div>
+
+
+   </div>

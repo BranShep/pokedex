@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="pokeApp">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" href="/css/styles.css" media="screen" title="no title" charset="utf-8">
+    <title>POKEMON</title>
+  </head>
+  <body ng-controller='mainCtrl' ng-class="{'active': active === true}">
+    <!-- <audio src="pokemon.mp3"autoplay></audio> -->
+
+    <section class="module parallax parallax-1" ng-hide='showTop'>
+
+      <ul>
+        <li><button class ="navbut" ui-sref="home">Home</button></li>
+        <li><button class ="navbut" ui-sref="pokeArena">Pokemon Arena</button></li>
+        <li><button class ="navbut" ui-sref="pokedex">Pokedex</button></li>
+      </ul>
+
+      <div class="container">
+        <div class="pokeball-left"><img ui-sref="pokeArena" class="pokeball" src="/images/pokeball2.png"/></div>
+    		  <div class="middle">
+
+
+             <img class="poke-logo" ui-sref="home" src="/images/pokemon.png"/>
+    		  </div>
+        <div class="pokeball-right"><img class="pokeball" src="/images/pokeball2.png"/></div>
+      </div>
+  	</section>
+
+    <main>
+  		<ui-view></ui-view>
+
+  	</main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+    <!--ANGULAR ANGULAR -->
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+
+    <!--UI ROUTER-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.14/angular-ui-router.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/mainCtrl.js"></script>
+    <script src="js/mainService.js"></script>
+    <script src="js/routes.js"></script>
+
+  </body>
+</html>

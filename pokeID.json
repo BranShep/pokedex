@@ -1,0 +1,14 @@
+{
+     {
+        "name":"Bulbasaur",
+        "evolutions": ["Ivysaur", "Venusaur"]
+     },
+     {
+     "name":"Ivysaur",
+     "evolutions": ["Bulbasaur", "Venusaur"]
+     },
+     {
+      "name":"Venusaur",
+      "evolutions": ["Bulbasaur", "Venusaur"]
+     }
+}
